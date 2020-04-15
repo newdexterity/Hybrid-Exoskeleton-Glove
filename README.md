@@ -15,5 +15,5 @@
 
 <p align="justify"> The operation of the device is straightforward. Using the smartphone app, the user selects the mode desired to control the exoskeleton glove. The user can combine the motions (e.g., full grasp with abducted fingers or tripod grasp with the extra thumb inflated and the jamming structures activated). The flex sensor can be selected to trigger the desired motion when a set bending angle is reached. The information is transmitted to a microcontroller through Bluetooth communication. Then, the microcontroller activates the chosen actuators that are connected to the glove. Each air supply is connected to a solenoid valve that is used to release the air pressure of the system when the glove returns to its original position. The entire system is powered by a 12V power supply. A battery can be added to the control unit to make the device portable and wearable. The amount of force applied by each finger is determined through a current control of each motor and can be adjusted according to the user's needs. </p>  
 
-<p align="center"><img src="https://github.com/newdexterity/Hybrid-Exoskeleton-Glove/blob/master/Exoskeleton_Glove_Figures/glove3.png" width="60%"></img></p>
+<p align="center"><img src="https://github.com/newdexterity/Hybrid-Exoskeleton-Glove/blob/master/Exoskeleton_Glove_Figures/glove3.png" width="80%"></img></p>
 
