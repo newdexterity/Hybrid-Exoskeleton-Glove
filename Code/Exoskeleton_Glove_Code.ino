@@ -58,7 +58,8 @@ void setup()
   bool result3 = false;
   bool result4 = false;
   bool result5 = false;
-
+  
+  // Change the motor ID and set the baud rate using the Robotis R+ Manager 2.0 
   uint8_t dxl_id = DXL_ID;
   uint8_t dx2_id = 2;
   uint8_t dx3_id = 3;
@@ -66,6 +67,7 @@ void setup()
   uint8_t dx5_id = 5;
   
   uint16_t model_number = 0;
+  // This initialization tests all motors and make sure all motors have the correct ID and are properly set up. 
 
   result = dxl_wb.init(DEVICE_NAME, BAUDRATE, &log);
   if (result == false)
@@ -113,7 +115,7 @@ void setup()
     Serial.println("Succeed to change current based position mode");
     Serial.println("Dynamixel is moving...");
 
-    for (int count = 0; count < 1; count++) //Motor Calibration
+    for (int count = 0; count < 1; count++) //All motors testing and Motor Calibration 
     {
       dxl_wb.goalPosition(dxl_id, (int32_t)0);
       dxl_wb.goalPosition(dx2_id, (int32_t)0);
@@ -128,14 +130,13 @@ void setup()
 
 void loop() 
 {
-  //Serial.println("INICIO");
  if(Serial2.available() > 0){ // Checks whether data is comming from the serial port
     state = Serial2.read(); // Reads the data from the serial port
-    Serial.println(state);
+    Serial.println(state); // Make sure the values received from the bluetooth module are compatible with the code
     state=state-48;
     int flex = 0;
  
- if (state == 1) { //Full Grasp
+ if (state == 1) { //Full Grasp: 5 fingers move
   dxl_wb.goalPosition(1, (int32_t)8000);
   dxl_wb.goalPosition(2, (int32_t)8000);
   dxl_wb.goalPosition(3, (int32_t)8000);
@@ -144,12 +145,12 @@ void loop()
   delay(1500);
   state = 0;
  }
- else if (state == 2) { // Tripod Grasp
+ else if (state == 2) { // Tripod Grasp: 3 fingers move
   dxl_wb.goalPosition(1, (int32_t)8000);
   dxl_wb.goalPosition(2, (int32_t)8000);
   dxl_wb.goalPosition(3, (int32_t)8000);
   delay(1000);
-  state = 0;}  else if (state == 3) { //Pinch Grasp
+  state = 0;}  else if (state == 3) { //Pinch Grasp: 2 fingers move
 
   dxl_wb.goalPosition(2, (int32_t)12000);
   dxl_wb.goalPosition(3, (int32_t)8000);
@@ -162,7 +163,7 @@ void loop()
        delay(4);
   } 
   delay(200);
-  state = 0;} else if (state == 5) {//Jamming
+  state = 0;} else if (state == 5) {//Jamming structures
   delay(500);
   for (int i = 0; i <= 255; i++) {
        analogWrite(jamming, i);
@@ -176,7 +177,7 @@ void loop()
        delay(4);
   } 
   delay(200);
-  state = 0;} else if (state == 7) {//Return to rest
+  state = 0;} else if (state == 7) {//Return to rest: press the return to rest button to return the motors to the initial position and to release all the solenoid valves
   dxl_wb.goalPosition(1, (int32_t)0);
   dxl_wb.goalPosition(2, (int32_t)0);
   dxl_wb.goalPosition(3, (int32_t)0);
