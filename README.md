@@ -17,3 +17,4 @@
 
 <p align="center"><img src="https://github.com/newdexterity/Hybrid-Exoskeleton-Glove/blob/master/Figures/glove3.png" width="80%"></img></p>
 
+<p align="justify"> The project is distributed under the Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/) </p>
